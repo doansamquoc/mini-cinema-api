@@ -1,3 +1,18 @@
 spring:
   application:
     name: mini-cinema
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: postgresql
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mini_cinema
+    username: postgres
+    password: 123456
+    driver-class-name: org.postgresql.Driver
+server:
+  port: 8080
