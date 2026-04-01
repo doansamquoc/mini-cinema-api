@@ -18,11 +18,11 @@ public record ErrorResponse(
         Map<String, List<String>> errors,
         LocalDateTime timestamp
 ) {
-    public static ErrorResponse of(ErrorCode errorCode, String path) {
+    public static ErrorResponse of(ErrorCode errorCode, String translatedMessage, String path) {
         return new ErrorResponse(
-                true,
+                false,
                 errorCode.name(),
-                errorCode.getMessage(),
+                translatedMessage,
                 null,
                 path,
                 null,
@@ -31,11 +31,11 @@ public record ErrorResponse(
         );
     }
 
-    public static ErrorResponse of(ErrorCode errorCode, String path, String method) {
+    public static ErrorResponse of(ErrorCode errorCode, String translatedMessage, String path, String method) {
         return new ErrorResponse(
-                true,
+                false,
                 errorCode.name(),
-                errorCode.getMessage(),
+                translatedMessage,
                 null,
                 path,
                 method,
@@ -44,11 +44,11 @@ public record ErrorResponse(
         );
     }
 
-    public static ErrorResponse of(ErrorCode errorCode, String detail, String path, String method) {
+    public static ErrorResponse of(ErrorCode errorCode, String translatedMessage, String detail, String path, String method) {
         return new ErrorResponse(
-                true,
+                false,
                 errorCode.name(),
-                errorCode.getMessage(),
+                translatedMessage,
                 detail,
                 path,
                 method,
@@ -59,15 +59,16 @@ public record ErrorResponse(
 
     public static ErrorResponse of(
             ErrorCode errorCode,
+            String translatedMessage,
             String detail,
             String path,
             String method,
             Map<String, List<String>> errors
     ) {
         return new ErrorResponse(
-                true,
+                false,
                 errorCode.name(),
-                errorCode.getMessage(),
+                translatedMessage,
                 detail,
                 path,
                 method,
