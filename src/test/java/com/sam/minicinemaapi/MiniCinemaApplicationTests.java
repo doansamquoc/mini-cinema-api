@@ -1,4 +1,4 @@
-package com.sam.mini_cinema;
+package com.sam.minicinemaapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,6 +1,6 @@
-package com.sam.mini_cinema.entity;
+package com.sam.minicinemaapi.entity;
 
-import com.sam.mini_cinema.constant.BookingStatus;
+import com.sam.minicinemaapi.constant.BookingStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -19,8 +19,8 @@ import java.time.Instant;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Booking extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id")
-    Customer customer;
+    @JoinColumn(name = "user_id")
+    User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "show_time_id")
@@ -33,9 +33,6 @@ public class Booking extends BaseEntity {
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     BookingStatus status = BookingStatus.PENDING;
-
-    @Column(name = "quantity")
-    Byte quantity;
 
     @Column(name = "total_price")
     BigDecimal totalPrice;

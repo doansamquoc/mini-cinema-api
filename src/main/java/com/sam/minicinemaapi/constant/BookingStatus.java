@@ -1,4 +1,4 @@
-package com.sam.mini_cinema.constant;
+package com.sam.minicinemaapi.constant;
 
 public enum BookingStatus {
     PENDING, CONFIRMED, CANCELED

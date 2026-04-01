@@ -1,6 +1,6 @@
 spring:
   application:
-    name: mini-cinema
+    name: Mini Cinema API
   jpa:
     properties:
       hibernate:
@@ -16,3 +16,6 @@ spring:
     driver-class-name: org.postgresql.Driver
 server:
   port: 8080
+
+app:
+  secret-key: 8d46a5159527e98043092e5fb95f1b88f28e3918dfdf8171a820eff88664b88a

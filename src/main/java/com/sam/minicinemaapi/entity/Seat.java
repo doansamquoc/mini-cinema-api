@@ -1,4 +1,4 @@
-package com.sam.mini_cinema.entity;
+package com.sam.minicinemaapi.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,4 +1,4 @@
-package com.sam.mini_cinema.entity;
+package com.sam.minicinemaapi.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,16 +13,20 @@ import java.math.BigDecimal;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "show_times")
+@Table(name = "tickets")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ShowTime extends BaseEntity {
+public class Ticket extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "movie_id")
-    Movie movie;
+    @JoinColumn(name = "booking_id")
+    Booking booking;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "room_id")
-    Room room;
+    @JoinColumn(name = "seat_id")
+    Seat seat;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "show_time_id")
+    ShowTime showTime;
 
     @Column(name = "price")
     BigDecimal price;

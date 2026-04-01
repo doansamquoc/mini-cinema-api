@@ -1,4 +1,4 @@
-package com.sam.mini_cinema;
+package com.sam.minicinemaapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
