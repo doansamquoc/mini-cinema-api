@@ -1,8 +1,8 @@
 package com.sam.minicinemaapi.entity;
 
-import com.sam.minicinemaapi.constant.UserStatus;
 import com.sam.minicinemaapi.constant.Gender;
 import com.sam.minicinemaapi.constant.Role;
+import com.sam.minicinemaapi.constant.UserStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -37,9 +37,12 @@ public class User extends BaseEntity {
     @Column(name = "phone_number", length = 16, unique = true)
     String phoneNumber;
 
+    @Column(name = "password", nullable = false)
+    String password;
+
     @Column(name = "status", length = 16)
     @Enumerated(EnumType.STRING)
-    UserStatus status;
+    UserStatus status = UserStatus.ACTIVE;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<Booking> bookings;

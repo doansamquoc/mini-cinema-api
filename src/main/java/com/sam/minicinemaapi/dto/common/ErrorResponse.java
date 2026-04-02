@@ -1,5 +1,6 @@
 package com.sam.minicinemaapi.dto.common;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.sam.minicinemaapi.constant.ErrorCode;
 
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 public record ErrorResponse(
         boolean success,
         String code,

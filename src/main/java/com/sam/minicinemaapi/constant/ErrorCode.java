@@ -10,9 +10,15 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public enum ErrorCode {
-    UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "error.unauthorized"),
-    ACCESS_DENIED(HttpStatus.FORBIDDEN, "error.access_denied"),
-    RESOURCE_NOT_FOUND(HttpStatus.NOT_FOUND, "error.resource_not_found");
+    UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "auth.error.unauthorized"),
+    ACCESS_DENIED(HttpStatus.FORBIDDEN, "auth.error.access_denied"),
+    INVALID_CREDENTIALS(HttpStatus.UNAUTHORIZED, "auth.error.invalid_credentials"),
+    ACCOUNT_DISABLED(HttpStatus.UNAUTHORIZED, "auth.error.account_disabled"),
+    ACCOUNT_LOCKED(HttpStatus.UNAUTHORIZED, "auth.error.account_locked"),
+    ACCOUNT_EXPIRED(HttpStatus.UNAUTHORIZED, "auth.error.account_expired"),
+
+    RESOURCE_NOT_FOUND(HttpStatus.NOT_FOUND, "error.resource_not_found"),
+    RESOURCE_CONFLICT(HttpStatus.CONFLICT, "error.resource_conflict");
 
     HttpStatus status;
     String messageKey;

@@ -5,6 +5,7 @@ import com.sam.minicinemaapi.constant.Role;
 import com.sam.minicinemaapi.entity.User;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.experimental.FieldDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,20 +15,27 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Getter
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserPrincipal implements UserDetails {
     Long id;
+    String email;
+    String password;
     Collection<? extends GrantedAuthority> authorities;
 
     private static Collection<? extends GrantedAuthority> extractAuthorities(Set<Role> roles) {
         return roles.stream()
-                .map(role -> new SimpleGrantedAuthority(AuthConstant.AUTHORIZE_PREFIX + role.name()))
+                .map(role -> new SimpleGrantedAuthority(AuthConstant.ROLE_PREFIX + role.name()))
                 .collect(Collectors.toSet());
     }
 
     public static UserPrincipal create(User user) {
-        return UserPrincipal.builder().id(user.getId()).authorities(extractAuthorities(user.getRoles())).build();
+        return UserPrincipal.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .password(user.getPassword())
+                .authorities(extractAuthorities(user.getRoles())).build();
     }
 
     @Override
@@ -37,12 +45,12 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return this.id.toString();
+        return this.email;
     }
 
     @Override

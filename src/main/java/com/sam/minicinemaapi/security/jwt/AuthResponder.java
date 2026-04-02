@@ -3,7 +3,6 @@ package com.sam.minicinemaapi.security.jwt;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sam.minicinemaapi.constant.ErrorCode;
 import com.sam.minicinemaapi.dto.common.ErrorResponse;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -24,11 +23,7 @@ public class AuthResponder {
     ObjectMapper mapper;
     MessageSource messageSource;
 
-    public void sendError(
-            HttpServletResponse servletResponse,
-            ErrorCode errorCode,
-            String path
-    ) throws IOException {
+    public void sendError(HttpServletResponse servletResponse, ErrorCode errorCode, String path) throws IOException {
         Locale locale = LocaleContextHolder.getLocale();
 
         String translatedMessage = messageSource.getMessage(errorCode.getMessageKey(), null, locale);
