@@ -23,4 +23,7 @@ public class Seat extends BaseEntity {
 
     @Column(name = "number", nullable = false)
     Byte number;
+
+    @Version
+    Long version;
 }
